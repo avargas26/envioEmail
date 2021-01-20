@@ -21,13 +21,13 @@ app.post("/", (req, res) => {
     const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-            user: "consultas@fonoeducar.cl",
-            pass: "Consultas2021"
+            user: process.env.EMAIL,
+            pass: process.env.PASSWORD
         }
     });
     process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
     const mailOptions = {
-        from: "consultas@fonoeducar.cl",
+        from: process.env.EMAIL,
         to: body.to,
         subject: body.subject,
         text: body.message
